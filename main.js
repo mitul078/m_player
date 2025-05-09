@@ -51,6 +51,7 @@ boxes.forEach((box) => {
 
 let nums = document.querySelectorAll('.num')
 let isActive = null;
+
 boxes.forEach((box) => {
     const num = box.querySelector('.num')
 
@@ -66,15 +67,16 @@ boxes.forEach((box) => {
         }
     })
     num.addEventListener('click', (e) => {
-        if (e.target.classList.contains('play')) {
-            if (isActive && isActive !== num) {
-                const pid = isActive.getAttribute('id')
-                isActive.innerHTML = `<h3>${pid}</h3>`
-            }
+        if (isActive && isActive !== num) {
+            const pid = isActive.getAttribute('id');
+            isActive.innerHTML = `<h3>${pid}</h3>`;
         }
-        num.innerHTML = '<i class="pause ri-pause-mini-line"></i> '
+        const shouldPause = num.innerHTML.includes('ri-play-fill');
+        num.innerHTML = shouldPause
+            ? '<i class="pause ri-pause-mini-line"></i>'
+            : '<i class="play ri-play-fill"></i>';
         isActive = num;
-    })
+    });
 })
 
 
@@ -84,8 +86,6 @@ boxes.forEach((box, index) => {
             b.classList.remove('active')
             box.classList.add('active')
         })
-
-
         let info = ` <h3>True</h3>
                         <img src="${playlist[index].musicImage}"
                             alt="">
@@ -137,7 +137,7 @@ boxes.forEach((box, index) => {
                 <div class="second">
                     <div class="upper">
                         <i class="ri-skip-back-fill"></i>
-                        <i class="ri-play-fill"></i>
+                        <i class="barPlay ri-play-fill"></i>
                         <i class="ri-skip-forward-fill"></i>
                     </div>
                     <div class="lower">
@@ -165,3 +165,13 @@ boxes.forEach((box, index) => {
 
 
 
+document.addEventListener('DOMContentLoaded', () => {
+    let barPlay = document.querySelector('.barPlay');
+    console.log('Found element:', barPlay); // Should now log the element
+    
+    boxes.forEach((box) => {
+        box.addEventListener('click', () => {
+            console.log(barPlay); // Should now work
+        });
+    });
+});
