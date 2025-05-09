@@ -21,7 +21,7 @@ playlist.forEach((song, index) => {
                                 <div id='${index + 1}' class="num"><h3>${song.id}</h3></div>
                                 <div class="song-image"><img src="${song.musicImage}" alt=""></div>
                                 <div class="song-detail">
-                                    <p>${song.musicName}</p>
+                                    <h4>${song.musicName}</h4>
                                     <p>${song.musicSinger}</p>
                                 </div>
                             </div>
@@ -121,12 +121,13 @@ boxes.forEach((box, index) => {
 
     })
 })
-
-
 let bar = document.querySelector('.player')
-boxes.forEach((box, index) => {
-    box.addEventListener('click', () => {
-        let info = ` <div class="first">
+function renderBarData(index) {
+    const currentBox = boxes[index];
+    const currentNum = currentBox.querySelector('.num');
+    const isPlaying = currentNum.innerHTML.includes('ri-pause-mini-line');
+
+    let info = ` <div class="first">
                         <img src="${playlist[index].musicImage} "alt="">
                         <div class="data">
                             <h4>${playlist[index].musicName}</h4>
@@ -137,12 +138,12 @@ boxes.forEach((box, index) => {
                 <div class="second">
                     <div class="upper">
                         <i class="ri-skip-back-fill"></i>
-                        <i class="barPlay ri-play-fill"></i>
+                        <i class="barPlay ${isPlaying ? 'ri-pause-mini-line' : 'ri-play-fill'}"></i>
                         <i class="ri-skip-forward-fill"></i>
                     </div>
                     <div class="lower">
                         <div class="progress">
-                            <div class="progress-bar"></div>
+                        <div class="progress-bar"></div>
                         </div>
                         <div class="time">
                             <h5>0:00</h5>
@@ -159,19 +160,77 @@ boxes.forEach((box, index) => {
                     </div>
                     <i class="ri-fullscreen-exit-fill"></i>
                 </div>`
-        bar.innerHTML = info
-    })
-})
+    bar.innerHTML = info
+}
+renderBarData(0)
+boxes.forEach((box, index) => {
+    box.addEventListener('click', () => {
+        renderBarData(index);
+    });
+});
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('barPlay')) {
+        const activeBox = document.querySelector('.box.active');
+        if (!activeBox) return;
+        const numElement = activeBox.querySelector('.num');
+        const isPlaying = numElement.innerHTML.includes('ri-pause-mini-line');
+        if (isPlaying) {
+            numElement.innerHTML = '<i class="play ri-play-fill"></i>';
+            e.target.classList.replace('ri-pause-mini-line', 'ri-play-fill');
+        } else {
+            numElement.innerHTML = '<i class="pause ri-pause-mini-line"></i>';
+            e.target.classList.replace('ri-play-fill', 'ri-pause-mini-line');
+        }
+    }
+});
 
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    let barPlay = document.querySelector('.barPlay');
-    console.log('Found element:', barPlay); // Should now log the element
+boxes.forEach((box, index) => {
+    let int = null;
+    let isRunning = false;
+    let totalSecond = 0;
+
+    let stopAt = 0;
     
-    boxes.forEach((box) => {
-        box.addEventListener('click', () => {
-            console.log(barPlay); // Should now work
-        });
+    const play = box.querySelector('.num');
+    const time = `${playlist[index].musicDuration}`;
+    const [mins, secs] = time.split(':');
+    const min = parseInt(mins, 10);
+    const sec = parseInt(secs, 10);
+    stopAt = min * 60 + sec;
+    
+    function runTime(seconds) {
+        const mins = String(Math.floor(seconds / 60)).padStart(2, '0');
+        const secs = String(seconds % 60).padStart(2, '0');
+        return `${mins}:${secs}`;
+    }
+    
+    
+    const progress = document.querySelector('.progress-bar')
+    play.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const t = document.querySelector('.time h5');
+        
+        if (!isRunning) {
+            int = setInterval(() => {
+                totalSecond++;
+                let p = Math.floor((totalSecond/stopAt) * 100)
+                progress.style.width = `${p}%`
+                console.log(progress)
+                t.innerHTML = runTime(totalSecond);
+                
+
+                if (totalSecond >= stopAt) {
+                    clearInterval(int);
+                    isRunning = false;
+                    return;
+                }
+            }, 1000);
+            isRunning = true;
+        } else {
+            clearInterval(int);
+            isRunning = false;
+        }
     });
 });

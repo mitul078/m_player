@@ -24,8 +24,13 @@ main {
 }
 
 .active {
-  color: greenyellow;
   background-color: #2D2D32;
+}
+.active .num {
+  color: #1DB954;
+}
+.active .song-detail h4 {
+  color: #1DB954;
 }
 
 .container {
@@ -60,9 +65,6 @@ main {
   border-top-right-radius: 1rem;
   border-top-left-radius: 1rem;
   align-items: center;
-}
-.container .music .left .playlist-name .pause {
-  display: none;
 }
 .container .music .left .playlist-name .l1 {
   width: 15rem;
@@ -138,6 +140,7 @@ main {
   flex: 1;
   justify-content: center;
   opacity: 0.7;
+  font-size: 0.9rem;
 }
 .container .music .left .playlist .box .right-side {
   flex: 0.5;
@@ -253,6 +256,11 @@ main {
   width: 40rem;
   height: 4px;
   background-color: grey;
+}
+.container .player .second .lower .progress .progress-bar {
+  width: 0%;
+  height: 4px;
+  background-color: #1DB954;
 }
 .container .player .second .lower .time {
   display: flex;
