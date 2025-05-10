@@ -143,10 +143,10 @@ function renderBarData(index) {
                     </div>
                     <div class="lower">
                         <div class="progress">
-                        <div class="progress-bar"></div>
+                            <div class="progress-bar"></div>
                         </div>
                         <div class="time">
-                            <h5>0:00</h5>
+                            <h5>00:00</h5>
                             <h5>${playlist[index].musicDuration}</h5>
                         </div>
                     </div>
@@ -184,53 +184,3 @@ document.addEventListener('click', (e) => {
     }
 });
 
-
-
-boxes.forEach((box, index) => {
-    let int = null;
-    let isRunning = false;
-    let totalSecond = 0;
-
-    let stopAt = 0;
-    
-    const play = box.querySelector('.num');
-    const time = `${playlist[index].musicDuration}`;
-    const [mins, secs] = time.split(':');
-    const min = parseInt(mins, 10);
-    const sec = parseInt(secs, 10);
-    stopAt = min * 60 + sec;
-    
-    function runTime(seconds) {
-        const mins = String(Math.floor(seconds / 60)).padStart(2, '0');
-        const secs = String(seconds % 60).padStart(2, '0');
-        return `${mins}:${secs}`;
-    }
-    
-    
-    const progress = document.querySelector('.progress-bar')
-    play.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const t = document.querySelector('.time h5');
-        
-        if (!isRunning) {
-            int = setInterval(() => {
-                totalSecond++;
-                let p = Math.floor((totalSecond/stopAt) * 100)
-                progress.style.width = `${p}%`
-                console.log(progress)
-                t.innerHTML = runTime(totalSecond);
-                
-
-                if (totalSecond >= stopAt) {
-                    clearInterval(int);
-                    isRunning = false;
-                    return;
-                }
-            }, 1000);
-            isRunning = true;
-        } else {
-            clearInterval(int);
-            isRunning = false;
-        }
-    });
-});
