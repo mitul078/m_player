@@ -110,7 +110,7 @@ boxes.forEach((box, index) => {
                                 <img src="${playlist[index + 1].musicImage}" alt="">
                                 <div class="data">
                                     <p>${playlist[index + 1].musicName}</p>
-                                    <p>${playlist[index + 1].musicSinger}</p>
+                                    <p>By ${playlist[index + 1].musicSinger}</p>
                                 </div>
                             </div>`
                 :
@@ -143,10 +143,12 @@ function renderBarData(index) {
                     </div>
                     <div class="lower">
                         <div class="progress">
-                            <div class="progress-bar"></div>
+                            <div class="progress-bar">
+                            </div>
+                            <div class="circle"></div>
                         </div>
                         <div class="time">
-                            <h5>00:00</h5>
+                            <h5 class="song-current-time">00:00</h5>
                             <h5>${playlist[index].musicDuration}</h5>
                         </div>
                     </div>
@@ -158,7 +160,7 @@ function renderBarData(index) {
                     <div class="prog">
                         <div class="prog-bar"></div>
                     </div>
-                    <i class="ri-fullscreen-exit-fill"></i>
+                    <i class="full ri-fullscreen-exit-fill"></i>
                 </div>`
     bar.innerHTML = info
 }
@@ -180,6 +182,95 @@ document.addEventListener('click', (e) => {
         } else {
             numElement.innerHTML = '<i class="pause ri-pause-mini-line"></i>';
             e.target.classList.replace('ri-play-fill', 'ri-pause-mini-line');
+        }
+    }
+});
+let time = document.querySelector('.song-current-time');
+let currentAudio = null;
+let isPlaying = false;
+let currentPlayingIndex = null;
+
+boxes.forEach((box, index) => {
+    const play = box.querySelector('.num');
+    
+    play.addEventListener('click', (e) => {
+        e.stopPropagation();
+        
+        if (currentPlayingIndex === index) {
+            togglePlayPause();
+            return;
+        }
+        
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+        }
+        
+        currentAudio = new Audio(playlist[index].musicSrc);
+        currentPlayingIndex = index;
+        isPlaying = true;
+        
+        
+        const timeElement = document.querySelector('.song-current-time');
+        const progressBar = document.querySelector('.progress-bar');
+        const cirLeft = document.querySelector('.circle');
+        
+        currentAudio.addEventListener('timeupdate', () => {
+            const minutes = Math.floor(currentAudio.currentTime / 60);
+            const seconds = Math.floor(currentAudio.currentTime % 60);
+            if (timeElement) {
+                timeElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            }
+
+            if (progressBar) {
+                const progress = (currentAudio.currentTime / currentAudio.duration) * 100;
+                progressBar.style.width = `${progress}%`;
+                console.log(cirLeft , progressBar)
+                cirLeft.style.left = `${progress}%`
+                
+            }
+        });
+        currentAudio.addEventListener('ended', () => {
+            play.innerHTML = `<h3>${index + 1}</h3>`;
+            isPlaying = false;
+            if (progressBar) progressBar.style.width = '0%';
+            if (timeElement) timeElement.textContent = '00:00';
+        });
+        
+        currentAudio.play();
+        updatePlayerBar(index, true);
+    });
+});
+
+function togglePlayPause() {
+    if (!currentAudio) return;
+    
+    if (isPlaying) {
+        currentAudio.pause();
+        isPlaying = false;
+    } else {
+        currentAudio.play();
+        isPlaying = true;
+        const play = boxes[currentPlayingIndex].querySelector('.num');
+        play.innerHTML = '<i class="pause ri-pause-mini-line"></i>';
+    }
+    updatePlayerBar(currentPlayingIndex, isPlaying);
+}
+
+
+function updatePlayerBar(index, playing) {
+    const barPlay = document.querySelector('.barPlay');
+    if (barPlay) {
+        barPlay.className = playing ? 'barPlay ri-pause-mini-line' : 'barPlay ri-play-fill';
+    }
+}
+let full = document.querySelector('.full')
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('barPlay')) {
+        if (currentPlayingIndex === null) {
+            boxes[0].querySelector('.num').click();
+        } else {
+            togglePlayPause();
         }
     }
 });
