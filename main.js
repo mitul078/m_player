@@ -5,7 +5,7 @@ const playlist = [
     { id: 1, musicImage: 'https://i.ytimg.com/vi/sFMRqxCexDk/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGBMgHyh_MA8=&rs=AOn4CLASvUOwkGlovr8nJCxc4ATXayHxxA', musicName: 'Choo Lo', musicSinger: 'The Local Train', albumName: 'Aalas Ka Pedh', musicDuration: '3:54', musicSrc: './m1.mp3' },
     { id: 2, musicImage: 'https://cdn.shortpixel.ai/spai/q_glossy+ret_img+to_auto/www.slantmagazine.com/wp-content/uploads/2024/08/music_diewithasmile.jpg', musicName: 'Die With Smile', musicSinger: 'Bruno Mars , Lady Gaga', albumName: 'Die With Smile', musicDuration: '4:12', musicSrc: './m2.mp3' },
     { id: 3, musicImage: 'https://i.ytimg.com/vi/4BrziEPQrOQ/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBvZKyFNe1vZXC4n1YTNPoWMoo2-g', musicName: 'Dil To Jaan Tu', musicSinger: 'Gurnazar, Chet Singh', albumName: 'Dil To Jaan Tu', musicDuration: '3:57', musicSrc: './m3.mp3' },
-    { id: 4, musicImage: 'https://c.saavncdn.com/133/Faasle-Hindi-2021-20210801214117-500x500.jpg', musicName: 'Faasle', musicSinger: 'Aditya Rikhari', albumName: 'Faasle', musicDuration: '3.42', musicSrc: './m4.mp3' },
+    { id: 4, musicImage: 'https://c.saavncdn.com/133/Faasle-Hindi-2021-20210801214117-500x500.jpg', musicName: 'Faasle', musicSinger: 'Aditya Rikhari', albumName: 'Faasle', musicDuration: '3:42', musicSrc: './m4.mp3' },
     { id: 5, musicImage: 'https://i1.sndcdn.com/artworks-GArwu8k4nmxqcByq-kGjdLg-t500x500.jpg', musicName: 'Kabhi Kabhi Aditi', musicSinger: 'Rashi Ali', albumName: 'Janne Tu.. Ya Janne Na', musicDuration: '3:39', musicSrc: './m5.mp3' },
     { id: 6, musicImage: 'https://images.genius.com/f6997af0e4a50956d92a5ca3514a9161.1000x1000x1.jpg', musicName: 'Ishq Hai', musicSinger: 'Anurag Saikia , Raj Shekhar ', albumName: 'Mis-matched S3', musicDuration: '5:13', musicSrc: './m6.mp3' },
     { id: 7, musicImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-ipztPLNU132WFdOMe7FAUQ0JFqJVivQM-A&s', musicName: 'Heartbreak Kid', musicSinger: 'Talha Anjum, Umair', albumName: 'My Terrible Mind', musicDuration: '4:04', musicSrc: './m7.mp3' },
@@ -137,9 +137,9 @@ function renderBarData(index) {
                 </div>
                 <div class="second">
                     <div class="upper">
-                        <i class="ri-skip-back-fill"></i>
+                        <i class="back ri-skip-back-fill"></i>
                         <i class="barPlay ${isPlaying ? 'ri-pause-mini-line' : 'ri-play-fill'}"></i>
-                        <i class="ri-skip-forward-fill"></i>
+                        <i class="next ri-skip-forward-fill"></i>
                     </div>
                     <div class="lower">
                         <div class="progress">
@@ -274,15 +274,30 @@ document.addEventListener('click', (e) => {
         }
     }
 });
-// playlist name;
+
 let number = document.querySelector('.n-of-song')
 number.innerHTML = `${playlist.length} songs`
 number.style.opacity = '.7'
 number.style.fontSize = '.9rem'
-let totalTime = document.querySelector('.total-duration')
 totalTime.style.opacity = '.7'
 totalTime.style.fontSize = '.9rem'
 
+let totalTime = document.querySelector('.total-duration')
+function calculateTotalDuration() {
+    let totalMinutes = 0;
+    let totalSeconds = 0;
+    playlist.forEach(song => {
+        const [minutes, seconds] = song.musicDuration.split(':');
+        totalMinutes += parseInt(minutes);
+        totalSeconds += parseInt(seconds);
+    });
+    totalMinutes += Math.floor(totalSeconds / 60);
+    totalSeconds = totalSeconds % 60;
+
+    const formattedDuration = `${totalMinutes} min ${totalSeconds} sec`;
+    totalTime.innerHTML = formattedDuration;
+}
+calculateTotalDuration();
 
 
 

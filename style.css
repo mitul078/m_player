@@ -65,7 +65,7 @@ main {
 }
 .container .music {
   width: 100%;
-  height: 85%;
+  height: 90vh;
   padding: 1rem;
   display: flex;
   align-items: center;
@@ -88,29 +88,33 @@ main {
   background: linear-gradient(to top, #1d1230, #4a3b74);
   border-top-right-radius: 1rem;
   border-top-left-radius: 1rem;
-  align-items: center;
 }
 .container .music .left .playlist-name .l1 {
-  width: 15rem;
-  width: 12.2rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 100%;
 }
 .container .music .left .playlist-name .l1 img {
+  background: center;
   border-radius: 1rem;
-  width: 100%;
+  width: 15rem;
   height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .container .music .left .playlist-name .l2 {
+  line-height: 2rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: start;
-  line-height: 2rem;
   justify-content: end;
-  width: 20rem;
-  height: 100%;
 }
 .container .music .left .playlist-name .l2 .user-info {
   display: flex;
   gap: 0.4rem;
+  white-space: nowrap;
 }
 .container .music .left .playlist {
   width: 100%;
@@ -131,10 +135,12 @@ main {
   display: flex;
   align-items: center;
   gap: 10px;
+  justify-content: space-between;
 }
 .container .music .left .playlist .box .left-side {
-  flex: 1;
   gap: 1rem;
+  flex: 1;
+  justify-content: flex-start;
 }
 .container .music .left .playlist .box .left-side .num {
   display: inline-block;
@@ -152,13 +158,16 @@ main {
      object-fit: cover;
   border-radius: 0.3rem;
 }
-.container .music .left .playlist .box .left-side .song-detail p {
-  font-size: 1.1rem;
-  font-weight: 900;
+.container .music .left .playlist .box .left-side .song-detail h4 {
+  font-size: clamp(0.7rem, 2vw, 1.2rem);
+  white-space: nowrap;
 }
-.container .music .left .playlist .box .left-side .song-detail :nth-child(2) {
+.container .music .left .playlist .box .left-side .song-detail p {
+  white-space: nowrap;
   font-size: 0.8rem;
   opacity: 0.7;
+  font-weight: 900;
+  line-height: 1rem;
 }
 .container .music .left .playlist .box .center {
   flex: 1;
@@ -166,8 +175,11 @@ main {
   opacity: 0.7;
   font-size: 0.9rem;
 }
+.container .music .left .playlist .box .center p {
+  white-space: nowrap;
+}
 .container .music .left .playlist .box .right-side {
-  flex: 0.5;
+  flex: 1;
   justify-content: flex-end;
   opacity: 0.7;
 }
@@ -245,7 +257,7 @@ main {
 }
 .container .player {
   width: 100%;
-  height: 15%;
+  height: 10vh;
   background-color: black;
   display: flex;
   align-items: center;
@@ -271,6 +283,12 @@ main {
   width: 3rem;
   height: 3rem;
 }
+.container .player .first .data h4 {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+}
+.container .player .first .data p {
+  font-size: clamp(0.9rem, 1vw, 1.3rem);
+}
 .container .player .second {
   width: 60%;
   display: flex;
@@ -285,7 +303,7 @@ main {
 }
 .container .player .second .lower .progress {
   margin: 0.5rem 0;
-  width: 40rem;
+  width: clamp(15rem, 50vw, 100rem);
   height: 4px;
   background-color: grey;
   position: relative;
@@ -321,4 +339,65 @@ main {
   width: 6rem;
   height: 4px;
   background-color: gray;
+}
+
+@media (max-width: 600px) {
+  .container .music {
+    height: 77vh;
+  }
+  .container .music .left {
+    width: 100% !important;
+  }
+  .container .music .left .playlist-name {
+    flex-direction: column;
+    width: 100%;
+    height: 50%;
+    justify-content: end;
+  }
+  .container .music .left .playlist-name .l2 {
+    justify-content: start;
+  }
+  .container .music .left .playlist {
+    height: 50%;
+  }
+  .container .music .left .playlist .box .left-side .song-detail h4 {
+    font-size: 1rem;
+  }
+  .container .music .left .playlist .box .right-side p {
+    display: none;
+  }
+  .container .music .left .playlist .box .center {
+    display: none;
+  }
+  .container .music .right {
+    display: none !important;
+  }
+  .container .player {
+    height: 30vh;
+    flex-direction: column;
+    align-items: start;
+    position: relative;
+    background: linear-gradient(to top, #1d1230, #4a3b74);
+    border-radius: 1rem;
+  }
+  .container .player .first {
+    white-space: nowrap;
+  }
+  .container .player .second .back, .container .player .second .next {
+    display: none;
+  }
+  .container .player .second .barPlay {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 2.5rem;
+  }
+  .container .player .second .lower {
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+  }
+  .container .player .third {
+    display: none;
+  }
 }/*# sourceMappingURL=style.css.map */
