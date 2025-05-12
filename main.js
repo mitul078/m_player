@@ -148,7 +148,7 @@ function renderBarData(index) {
                             <div class="circle"></div>
                         </div>
                         <div class="time">
-                            <h5 class="song-current-time">00:00</h5>
+                            <h5 class="song-current-time">0:00</h5>
                             <h5>${playlist[index].musicDuration}</h5>
                         </div>
                     </div>
@@ -192,29 +192,29 @@ let currentPlayingIndex = null;
 
 boxes.forEach((box, index) => {
     const play = box.querySelector('.num');
-    
+
     play.addEventListener('click', (e) => {
         e.stopPropagation();
-        
+
         if (currentPlayingIndex === index) {
             togglePlayPause();
             return;
         }
-        
+
         if (currentAudio) {
             currentAudio.pause();
             currentAudio.currentTime = 0;
         }
-        
+
         currentAudio = new Audio(playlist[index].musicSrc);
         currentPlayingIndex = index;
         isPlaying = true;
-        
-        
+
+
         const timeElement = document.querySelector('.song-current-time');
         const progressBar = document.querySelector('.progress-bar');
         const cirLeft = document.querySelector('.circle');
-        
+
         currentAudio.addEventListener('timeupdate', () => {
             const minutes = Math.floor(currentAudio.currentTime / 60);
             const seconds = Math.floor(currentAudio.currentTime % 60);
@@ -225,9 +225,9 @@ boxes.forEach((box, index) => {
             if (progressBar) {
                 const progress = (currentAudio.currentTime / currentAudio.duration) * 100;
                 progressBar.style.width = `${progress}%`;
-                console.log(cirLeft , progressBar)
+                console.log(cirLeft, progressBar)
                 cirLeft.style.left = `${progress}%`
-                
+
             }
         });
         currentAudio.addEventListener('ended', () => {
@@ -236,7 +236,7 @@ boxes.forEach((box, index) => {
             if (progressBar) progressBar.style.width = '0%';
             if (timeElement) timeElement.textContent = '00:00';
         });
-        
+
         currentAudio.play();
         updatePlayerBar(index, true);
     });
@@ -244,7 +244,7 @@ boxes.forEach((box, index) => {
 
 function togglePlayPause() {
     if (!currentAudio) return;
-    
+
     if (isPlaying) {
         currentAudio.pause();
         isPlaying = false;
@@ -274,4 +274,15 @@ document.addEventListener('click', (e) => {
         }
     }
 });
+// playlist name;
+let number = document.querySelector('.n-of-song')
+number.innerHTML = `${playlist.length} songs`
+number.style.opacity = '.7'
+number.style.fontSize = '.9rem'
+let totalTime = document.querySelector('.total-duration')
+totalTime.style.opacity = '.7'
+totalTime.style.fontSize = '.9rem'
+
+
+
 

@@ -3,6 +3,17 @@
     padding: 0;
     box-sizing: border-box;
 }
+.comic-relief-regular {
+  font-family: "Comic Relief", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.comic-relief-bold {
+  font-family: "Comic Relief", system-ui;
+  font-weight: 700;
+  font-style: normal;
+}
 
 html,
 body {
@@ -10,9 +21,20 @@ body {
     height: 100%;
     color: whitesmoke;
 }
+.comic-relief-regular {
+  font-family: "Comic Relief", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.comic-relief-bold {
+  font-family: "Comic Relief", system-ui;
+  font-weight: 700;
+  font-style: normal;
+}
 
 body {
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Comic Relief';
 }
 
 main {
@@ -321,7 +343,7 @@ main {
                     .circle {
                         position: absolute;
                         top: 3px;
-                        left: 3px;
+                        left: 0;
                         background-color: white;
                         width: 13px;
                         height: 13px;
