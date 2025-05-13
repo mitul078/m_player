@@ -3,16 +3,17 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 .comic-relief-regular {
-  font-family: "Comic Relief", system-ui;
-  font-weight: 400;
-  font-style: normal;
+    font-family: "Comic Relief", system-ui;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .comic-relief-bold {
-  font-family: "Comic Relief", system-ui;
-  font-weight: 700;
-  font-style: normal;
+    font-family: "Comic Relief", system-ui;
+    font-weight: 700;
+    font-style: normal;
 }
 
 html,
@@ -21,16 +22,17 @@ body {
     height: 100%;
     color: whitesmoke;
 }
+
 .comic-relief-regular {
-  font-family: "Comic Relief", system-ui;
-  font-weight: 400;
-  font-style: normal;
+    font-family: "Comic Relief", system-ui;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .comic-relief-bold {
-  font-family: "Comic Relief", system-ui;
-  font-weight: 700;
-  font-style: normal;
+    font-family: "Comic Relief", system-ui;
+    font-weight: 700;
+    font-style: normal;
 }
 
 body {
@@ -57,15 +59,22 @@ main {
     background-color: #2D2D32;
 }
 
+.barPlay:hover {
+    cursor: pointer;
+}
+
 .container {
     width: 100%;
     height: 100%;
     background-color: #121212;
     overflow: hidden;
 
+
+
+
     .music {
         width: 100%;
-        height: 85%;
+        height: 90vh;
         padding: 1rem;
         display: flex;
         align-items: center;
@@ -89,31 +98,32 @@ main {
                 background: linear-gradient(to top, #1d1230, #4a3b74);
                 border-top-right-radius: 1rem;
                 border-top-left-radius: 1rem;
-                align-items: center;
 
                 .l1 {
-                    width: 15rem;
-                    width: 12.2rem;
+                    width: fit-content;
+                    height: 100%;
 
                     img {
+                        background: center;
                         border-radius: 1rem;
-                        width: 100%;
+                        width: 15rem;
                         height: 100%;
+                        object-fit: cover;
                     }
                 }
 
                 .l2 {
+                    line-height: 2rem;
+                    width: fit-content;
+                    height: 100%;
                     display: flex;
                     flex-direction: column;
-                    align-items: start;
-                    line-height: 2rem;
                     justify-content: end;
-                    width: 20rem;
-                    height: 100%;
 
                     .user-info {
                         display: flex;
                         gap: .4rem;
+                        white-space: nowrap;
                     }
                 }
             }
@@ -139,11 +149,13 @@ main {
                         display: flex;
                         align-items: center;
                         gap: 10px;
+                        justify-content: space-between;
                     }
 
                     .left-side {
-                        flex: 1;
                         gap: 1rem;
+                        flex: 1;
+                        justify-content: flex-start;
 
                         .num {
                             display: inline-block;
@@ -164,14 +176,17 @@ main {
                         }
 
                         .song-detail {
-                            p {
-                                font-size: 1.1rem;
-                                font-weight: 900;
+                            h4 {
+                                font-size: clamp(.7rem, 2vw, 1.2rem);
+                                white-space: nowrap;
                             }
 
-                            :nth-child(2) {
+                            p {
+                                white-space: nowrap;
                                 font-size: .8rem;
                                 opacity: .7;
+                                font-weight: 900;
+                                line-height: 1rem;
                             }
                         }
                     }
@@ -181,17 +196,23 @@ main {
                         justify-content: center;
                         opacity: .7;
                         font-size: .9rem;
+
+                        p {
+                            white-space: nowrap;
+                        }
                     }
 
                     .right-side {
-                        flex: .5;
+                        flex: 1;
                         justify-content: flex-end;
                         opacity: .7;
+
                     }
                 }
 
                 .box:hover {
                     background-color: #2D2D32;
+                    cursor: pointer;
                 }
             }
         }
@@ -239,7 +260,12 @@ main {
                     border-radius: 1rem;
                     border: none;
                     font-weight: 900;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
                 }
+
             }
 
             .next-song-display {
@@ -259,11 +285,13 @@ main {
                     }
 
                     .data {
-                        line-height:1.5rem;
-                        p{
+                        line-height: 1.5rem;
+
+                        p {
                             font-size: 1.2rem;
                         }
-                        :nth-child(2){
+
+                        :nth-child(2) {
                             opacity: .7;
                             font-weight: 900;
                             font-size: .9rem;
@@ -282,12 +310,13 @@ main {
 
     .player {
         width: 100%;
-        height: 15%;
+        height: 10vh;
         background-color: black;
         display: flex;
         align-items: center;
         justify-content: space-between;
         padding: 1rem;
+        position: relative;
 
         h1 {
             width: 100%;
@@ -309,7 +338,16 @@ main {
             img {
                 width: 3rem;
                 height: 3rem;
+            }
 
+            .data {
+                h4 {
+                    font-size: clamp(1rem, 2vw, 1.2rem);
+                }
+
+                p {
+                    font-size: clamp(.9rem, 1vw, 1.3rem);
+                }
             }
         }
 
@@ -329,7 +367,7 @@ main {
             .lower {
                 .progress {
                     margin: .5rem 0;
-                    width: 40rem;
+                    width: clamp(15rem, 50vw, 100rem);
                     height: 4px;
                     background-color: grey;
                     position: relative;
@@ -349,7 +387,6 @@ main {
                         height: 13px;
                         border-radius: 50%;
                         transform: translate(-50%, -50%);
-
                     }
                 }
 
@@ -374,6 +411,277 @@ main {
                 width: 6rem;
                 height: 4px;
                 background-color: gray;
+            }
+        }
+    }
+
+    .mobile-view {
+        position: fixed;
+        z-index: 999;
+        top: 0;
+        width: 480px;
+        height: 30rem;
+        overflow: auto;
+        color: black;
+        padding: .7rem 1rem;
+        background-color: burlywood;
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 1.5rem;
+            color: white;
+
+            .down:hover {
+                cursor: pointer;
+            }
+        }
+
+        .image-section {
+            margin: 1.3rem auto;
+            width: 70%;
+            height: 200px;
+
+            img {
+                border-radius: .5rem;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .music-info {
+            display: flex;
+            gap: .5rem;
+            color: white;
+
+            img {
+                width: 3rem;
+                height: 3rem;
+                object-fit: cover;
+            }
+
+            :nth-child(2) {
+                h5{
+                    opacity: .7;
+                }
+            }
+        }
+
+        .progress {
+            margin: .5rem 0;
+            width: 100%;
+            height: 4px;
+            background-color: white;
+            position: relative;
+            margin-top: 1.5rem;
+
+            .progress-bar {
+                width: 0%;
+                height: 4px;
+                background-color: #1DB954;
+            }
+
+            .circle {
+                position: absolute;
+                top: 3px;
+                left: 0;
+                background-color: whitesmoke;
+                width: 13px;
+                height: 13px;
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        .time {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            opacity: .7;
+            color: white;
+        }
+
+        .icons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            gap: 1rem;
+            color: white;
+
+            :nth-child(2) {
+                background-color: white;
+                color: black;
+                border-radius: 50%;
+                padding: .8rem;
+                font-size: 2.2rem;
+            }
+        }
+
+        .lyrics {
+            margin-top: 1rem;
+            border-radius: 1rem;
+            color: white;
+            padding: 1rem;
+            font-size: 1.2rem;
+            background-color:skyblue;
+            overflow: auto;
+            max-height: 450px;
+
+            p {
+                width: 70%;
+            }
+        }
+
+        .about-artist {
+            margin-top: 1rem;
+            border-radius: .8rem;
+            width: 100%;
+            height: 270px;
+            position: relative;
+            background-color: #2D2D32;
+
+            img {
+                width: 100%;
+                height: 180px;
+                border-radius: .8rem;
+                object-fit: cover;
+            }
+
+            h1 {
+                position: absolute;
+                top: 10px;
+                left: 5px;
+                font-size: 1rem;
+                color: white;
+            }
+
+            .music-det {
+                margin: .7rem;
+                color: white;
+
+                :nth-child(2) {
+                    opacity: .7;
+                }
+            }
+        }
+
+    }
+}
+
+@media (min-width: 601px) {
+    .mobile-view{
+        display: none !important;
+    }
+}
+@media (max-width: 600px) {
+    .container {
+        .music {
+            height: 77vh;
+
+            .left {
+                width: 100% !important;
+
+                .playlist-name {
+                    flex-direction: column;
+
+                    width: 100%;
+                    height: 50%;
+                    justify-content: end;
+
+                    .l2 {
+                        justify-content: start;
+                    }
+                }
+
+                .playlist {
+                    height: 50%;
+
+                    .box {
+                        background-color: #1F1F1F;
+                        .left-side {
+                            .song-detail {
+                                h4 {
+                                    font-size: 1rem;
+                                }
+                            }
+                        }
+
+                        .right-side {
+                            p {
+                                display: none;
+                            }
+                        }
+
+                        .center {
+                            display: none;
+                        }
+                    }
+
+                    .box:hover {
+                        background-color: #2D2D32 !important;
+                    }
+                }
+            }
+
+            .right {
+                display: none !important;
+            }
+        }
+
+        .player {
+            height: 30vh;
+            flex-direction: column;
+            align-items: start;
+            position: relative;
+            background: linear-gradient(to top, #1d1230, #4a3b74);
+            border-radius: 1rem;
+
+            .first {
+                white-space: nowrap;
+            }
+
+            .second {
+
+                .back,
+                .next {
+                    display: none;
+                }
+
+                .barPlay {
+                    position: absolute;
+                    right: 1rem;
+                    top: 1rem;
+                    font-size: 2.5rem;
+                }
+
+                .lower {
+                    position: absolute;
+                    top: 4rem;
+                    left: 4rem;
+                }
+            }
+
+            .third {
+                display: none;
+            }
+        }
+
+        .mobile-view {
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    .container {
+        .music {
+            .right {
+                display: none !important;
             }
         }
     }

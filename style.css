@@ -57,6 +57,10 @@ main {
   color: #1DB954;
 }
 
+.barPlay:hover {
+  cursor: pointer;
+}
+
 .container {
   width: 100%;
   height: 100%;
@@ -185,6 +189,7 @@ main {
 }
 .container .music .left .playlist .box:hover {
   background-color: #2D2D32;
+  cursor: pointer;
 }
 .container .music .right {
   height: 100%;
@@ -226,6 +231,9 @@ main {
   border: none;
   font-weight: 900;
 }
+.container .music .right .listeners button:hover {
+  cursor: pointer;
+}
 .container .music .right .next-song-display {
   margin-top: 1rem;
   background-color: #1F1F1F;
@@ -263,6 +271,7 @@ main {
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
+  position: relative;
 }
 .container .player h1 {
   width: 100%;
@@ -340,7 +349,146 @@ main {
   height: 4px;
   background-color: gray;
 }
+.container .mobile-view {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  width: 480px;
+  height: 30rem;
+  overflow: auto;
+  color: black;
+  padding: 0.7rem 1rem;
+  background-color: burlywood;
+}
+.container .mobile-view .nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  color: white;
+}
+.container .mobile-view .nav .down:hover {
+  cursor: pointer;
+}
+.container .mobile-view .image-section {
+  margin: 1.3rem auto;
+  width: 70%;
+  height: 200px;
+}
+.container .mobile-view .image-section img {
+  border-radius: 0.5rem;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.container .mobile-view .music-info {
+  display: flex;
+  gap: 0.5rem;
+  color: white;
+}
+.container .mobile-view .music-info img {
+  width: 3rem;
+  height: 3rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.container .mobile-view .music-info :nth-child(2) h5 {
+  opacity: 0.7;
+}
+.container .mobile-view .progress {
+  margin: 0.5rem 0;
+  width: 100%;
+  height: 4px;
+  background-color: white;
+  position: relative;
+  margin-top: 1.5rem;
+}
+.container .mobile-view .progress .progress-bar {
+  width: 0%;
+  height: 4px;
+  background-color: #1DB954;
+}
+.container .mobile-view .progress .circle {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  background-color: whitesmoke;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.container .mobile-view .time {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 0.7;
+  color: white;
+}
+.container .mobile-view .icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  gap: 1rem;
+  color: white;
+}
+.container .mobile-view .icons :nth-child(2) {
+  background-color: white;
+  color: black;
+  border-radius: 50%;
+  padding: 0.8rem;
+  font-size: 2.2rem;
+}
+.container .mobile-view .lyrics {
+  margin-top: 1rem;
+  border-radius: 1rem;
+  color: white;
+  padding: 1rem;
+  font-size: 1.2rem;
+  background-color: skyblue;
+  overflow: auto;
+  max-height: 450px;
+}
+.container .mobile-view .lyrics p {
+  width: 70%;
+}
+.container .mobile-view .about-artist {
+  margin-top: 1rem;
+  border-radius: 0.8rem;
+  width: 100%;
+  height: 270px;
+  position: relative;
+  background-color: #2D2D32;
+}
+.container .mobile-view .about-artist img {
+  width: 100%;
+  height: 180px;
+  border-radius: 0.8rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.container .mobile-view .about-artist h1 {
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  font-size: 1rem;
+  color: white;
+}
+.container .mobile-view .about-artist .music-det {
+  margin: 0.7rem;
+  color: white;
+}
+.container .mobile-view .about-artist .music-det :nth-child(2) {
+  opacity: 0.7;
+}
 
+@media (min-width: 601px) {
+  .mobile-view {
+    display: none !important;
+  }
+}
 @media (max-width: 600px) {
   .container .music {
     height: 77vh;
@@ -360,6 +508,9 @@ main {
   .container .music .left .playlist {
     height: 50%;
   }
+  .container .music .left .playlist .box {
+    background-color: #1F1F1F;
+  }
   .container .music .left .playlist .box .left-side .song-detail h4 {
     font-size: 1rem;
   }
@@ -368,6 +519,9 @@ main {
   }
   .container .music .left .playlist .box .center {
     display: none;
+  }
+  .container .music .left .playlist .box:hover {
+    background-color: #2D2D32 !important;
   }
   .container .music .right {
     display: none !important;
@@ -383,7 +537,8 @@ main {
   .container .player .first {
     white-space: nowrap;
   }
-  .container .player .second .back, .container .player .second .next {
+  .container .player .second .back,
+  .container .player .second .next {
     display: none;
   }
   .container .player .second .barPlay {
@@ -399,5 +554,15 @@ main {
   }
   .container .player .third {
     display: none;
+  }
+  .container .mobile-view {
+    width: 100%;
+    height: 100%;
+    display: none;
+  }
+}
+@media (max-width: 1000px) {
+  .container .music .right {
+    display: none !important;
   }
 }/*# sourceMappingURL=style.css.map */

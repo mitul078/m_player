@@ -2,17 +2,18 @@ let text = document.querySelector('.song-detail p')
 let musicPlaylist = document.querySelector('.playlist')
 
 const playlist = [
-    { id: 1, musicImage: 'https://i.ytimg.com/vi/sFMRqxCexDk/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGBMgHyh_MA8=&rs=AOn4CLASvUOwkGlovr8nJCxc4ATXayHxxA', musicName: 'Choo Lo', musicSinger: 'The Local Train', albumName: 'Aalas Ka Pedh', musicDuration: '3:54', musicSrc: './m1.mp3' },
-    { id: 2, musicImage: 'https://cdn.shortpixel.ai/spai/q_glossy+ret_img+to_auto/www.slantmagazine.com/wp-content/uploads/2024/08/music_diewithasmile.jpg', musicName: 'Die With Smile', musicSinger: 'Bruno Mars , Lady Gaga', albumName: 'Die With Smile', musicDuration: '4:12', musicSrc: './m2.mp3' },
-    { id: 3, musicImage: 'https://i.ytimg.com/vi/4BrziEPQrOQ/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBvZKyFNe1vZXC4n1YTNPoWMoo2-g', musicName: 'Dil To Jaan Tu', musicSinger: 'Gurnazar, Chet Singh', albumName: 'Dil To Jaan Tu', musicDuration: '3:57', musicSrc: './m3.mp3' },
-    { id: 4, musicImage: 'https://c.saavncdn.com/133/Faasle-Hindi-2021-20210801214117-500x500.jpg', musicName: 'Faasle', musicSinger: 'Aditya Rikhari', albumName: 'Faasle', musicDuration: '3:42', musicSrc: './m4.mp3' },
-    { id: 5, musicImage: 'https://i1.sndcdn.com/artworks-GArwu8k4nmxqcByq-kGjdLg-t500x500.jpg', musicName: 'Kabhi Kabhi Aditi', musicSinger: 'Rashi Ali', albumName: 'Janne Tu.. Ya Janne Na', musicDuration: '3:39', musicSrc: './m5.mp3' },
-    { id: 6, musicImage: 'https://images.genius.com/f6997af0e4a50956d92a5ca3514a9161.1000x1000x1.jpg', musicName: 'Ishq Hai', musicSinger: 'Anurag Saikia , Raj Shekhar ', albumName: 'Mis-matched S3', musicDuration: '5:13', musicSrc: './m6.mp3' },
-    { id: 7, musicImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-ipztPLNU132WFdOMe7FAUQ0JFqJVivQM-A&s', musicName: 'Heartbreak Kid', musicSinger: 'Talha Anjum, Umair', albumName: 'My Terrible Mind', musicDuration: '4:04', musicSrc: './m7.mp3' },
-    { id: 8, musicImage: 'https://i.ytimg.com/vi/alkj73ka5m4/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBNP8C_kHquHEtgE-ChXihT3TCu1g', musicName: 'Departure Lane', musicSinger: 'Talha Anjum , Umair', albumName: 'My Terrible Mind', musicDuration: '2:47', musicSrc: './m8.mp3' },
-    { id: 9, musicImage: 'https://images.genius.com/4ad6d73dbd7d0ca4abecdaab6eee0e20.1000x1000x1.png', musicName: 'Paro', musicSinger: 'Aditya Rikhari', albumName: 'Paro', musicDuration: '2:33', musicSrc: './m9.mp3' },
-    { id: 10, musicImage: 'https://i.scdn.co/image/ab67616d0000b27385c5968be0d0d9c545241124', musicName: 'Pal Pal', musicSinger: 'Afusic', albumName: 'Pal Pal', musicDuration: '2:27', musicSrc: './m10.mp3' }
-]
+    { id: 1, musicImage: 'https://i.ytimg.com/vi/sFMRqxCexDk/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGBMgHyh_MA8=&rs=AOn4CLASvUOwkGlovr8nJCxc4ATXayHxxA', musicName: 'Choo Lo', musicSinger: 'The Local Train', albumName: 'Aalas Ka Pedh', musicDuration: '3:54', musicSrc: './m1.mp3', bgColor: 'linear-gradient(90deg, #1CB5E0 0%, #000851 100%)' },
+    { id: 2, musicImage: 'https://cdn.shortpixel.ai/spai/q_glossy+ret_img+to_auto/www.slantmagazine.com/wp-content/uploads/2024/08/music_diewithasmile.jpg', musicName: 'Die With Smile', musicSinger: 'Bruno Mars , Lady Gaga', albumName: 'Die With Smile', musicDuration: '4:12', musicSrc: './m2.mp3', bgColor: 'linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%)' },
+    { id: 3, musicImage: 'https://i.ytimg.com/vi/4BrziEPQrOQ/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBvZKyFNe1vZXC4n1YTNPoWMoo2-g', musicName: 'Dil To Jaan Tu', musicSinger: 'Gurnazar, Chet Singh', albumName: 'Dil To Jaan Tu', musicDuration: '3:57', musicSrc: './m3.mp3', bgColor: 'linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%)' },
+    { id: 4, musicImage: 'https://c.saavncdn.com/133/Faasle-Hindi-2021-20210801214117-500x500.jpg', musicName: 'Faasle', musicSinger: 'Aditya Rikhari', albumName: 'Faasle', musicDuration: '3:42', musicSrc: './m4.mp3', bgColor: 'linear-gradient(90deg, #3F2B96 0%, #A8C0FF 100%)' },
+    { id: 5, musicImage: 'https://i1.sndcdn.com/artworks-GArwu8k4nmxqcByq-kGjdLg-t500x500.jpg', musicName: 'Kabhi Kabhi Aditi', musicSinger: 'Rashi Ali', albumName: 'Janne Tu.. Ya Janne Na', musicDuration: '3:39', musicSrc: './m5.mp3', bgColor: 'linear-gradient(90deg, #FDBB2D 0%, #22C1C3 100%)' },
+    { id: 6, musicImage: 'https://images.genius.com/f6997af0e4a50956d92a5ca3514a9161.1000x1000x1.jpg', musicName: 'Ishq Hai', musicSinger: 'Anurag Saikia , Raj Shekhar ', albumName: 'Mis-matched S3', musicDuration: '5:13', musicSrc: './m6.mp3', bgColor: 'linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%)' },
+    { id: 7, musicImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-ipztPLNU132WFdOMe7FAUQ0JFqJVivQM-A&s', musicName: 'Heartbreak Kid', musicSinger: 'Talha Anjum, Umair', albumName: 'My Terrible Mind', musicDuration: '4:04', musicSrc: './m7.mp3', bgColor: 'linear-gradient(90deg, #d53369 0%, #daae51 100%)' },
+    { id: 8, musicImage: 'https://i.ytimg.com/vi/alkj73ka5m4/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBNP8C_kHquHEtgE-ChXihT3TCu1g', musicName: 'Departure Lane', musicSinger: 'Talha Anjum , Umair', albumName: 'My Terrible Mind', musicDuration: '2:47', musicSrc: './m8.mp3', bgColor: 'linear-gradient(90deg, #fcff9e 0%, #c67700 100%)' },
+    { id: 9, musicImage: 'https://images.genius.com/4ad6d73dbd7d0ca4abecdaab6eee0e20.1000x1000x1.png', musicName: 'Paro', musicSinger: 'Aditya Rikhari', albumName: 'Paro', musicDuration: '2:33', musicSrc: './m9.mp3', bgColor: 'linear-gradient(90deg, #9ebd13 0%, #008552 100%)' },
+    { id: 10, musicImage: 'https://i.scdn.co/image/ab67616d0000b27385c5968be0d0d9c545241124', musicName: 'Pal Pal', musicSinger: 'Afusic', albumName: 'Pal Pal', musicDuration: '2:27', musicSrc: './m10.mp3', bgColor: 'linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%)' }
+];
+
 
 let music = ''
 playlist.forEach((song, index) => {
@@ -157,9 +158,6 @@ function renderBarData(index) {
                     <i class="ri-headphone-fill"></i>
                     <i class="ri-menu-5-line"></i>
                     <i class="ri-volume-up-fill"></i>
-                    <div class="prog">
-                        <div class="prog-bar"></div>
-                    </div>
                     <i class="full ri-fullscreen-exit-fill"></i>
                 </div>`
     bar.innerHTML = info
@@ -225,9 +223,7 @@ boxes.forEach((box, index) => {
             if (progressBar) {
                 const progress = (currentAudio.currentTime / currentAudio.duration) * 100;
                 progressBar.style.width = `${progress}%`;
-                console.log(cirLeft, progressBar)
                 cirLeft.style.left = `${progress}%`
-
             }
         });
         currentAudio.addEventListener('ended', () => {
@@ -244,7 +240,6 @@ boxes.forEach((box, index) => {
 
 function togglePlayPause() {
     if (!currentAudio) return;
-
     if (isPlaying) {
         currentAudio.pause();
         isPlaying = false;
@@ -256,17 +251,15 @@ function togglePlayPause() {
     }
     updatePlayerBar(currentPlayingIndex, isPlaying);
 }
-
-
 function updatePlayerBar(index, playing) {
     const barPlay = document.querySelector('.barPlay');
     if (barPlay) {
         barPlay.className = playing ? 'barPlay ri-pause-mini-line' : 'barPlay ri-play-fill';
     }
 }
-let full = document.querySelector('.full')
 document.addEventListener('click', (e) => {
     if (e.target.classList.contains('barPlay')) {
+        mobileView.style.setProperty("display", "none", "important")
         if (currentPlayingIndex === null) {
             boxes[0].querySelector('.num').click();
         } else {
@@ -279,8 +272,8 @@ let number = document.querySelector('.n-of-song')
 number.innerHTML = `${playlist.length} songs`
 number.style.opacity = '.7'
 number.style.fontSize = '.9rem'
-totalTime.style.opacity = '.7'
-totalTime.style.fontSize = '.9rem'
+
+
 
 let totalTime = document.querySelector('.total-duration')
 function calculateTotalDuration() {
@@ -300,4 +293,57 @@ function calculateTotalDuration() {
 calculateTotalDuration();
 
 
+let mobileView = document.querySelector('.mobile-view')
+let down = document.querySelector('.down')
 
+bar.addEventListener('click', () => {
+    mobileView.style.display = 'inline-block';
+})
+down.addEventListener('click', () => {
+    mobileView.style.display = 'none';
+})
+
+let update = document.querySelector('.updateInfo')
+boxes.forEach((box, index) => {
+    box.addEventListener('click', () => {
+        let mData = ` <div class="image-section">
+                    <img src="${playlist[index].musicImage}" alt="">
+                </div>
+                <div class="music-info">
+                    <img src="${playlist[index].musicImage}" alt="">
+                    <div class="music-det">
+                        <h3>${playlist[index].musicName}</h3>
+                        <h5>${playlist[index].musicSinger}</h5>
+                    </div>
+                </div>
+                <div class="progress">
+                        <div class="progress-bar">
+                        </div>
+                        <div class="circle"></div>
+                    </div>
+                    <div class="time">
+                        <h5 class="song-current-time">0:00</h5>
+                        <h5>${playlist[index].musicDuration}</h5>
+                    </div>
+                     <div class="icons">
+                    <i class="ri-skip-back-mini-fill"></i>
+                    <i class="ri-play-mini-fill"></i>
+                    <i class="ri-skip-forward-mini-fill"></i>
+                </div>
+                <div class="lyrics">
+                    <h4>Lyrics Preview</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, adipisci. Quasi voluptatem doloribus animi eligendi illo temporibus nostrum harum eius expedita rerum qui nulla, aut facilis odit hic! Itaque ducimus veniam rerum reprehenderit odio dolorem, animi porro officiis minima dolor ea ut corrupti voluptate impedit maiores voluptatum in quasi provident neque nulla quaerat esse. Officia eligendi laboriosam iste eaque eveniet aliquid quis minus, deserunt, dolor est ipsam esse quasi ab qui impedit repellat beatae. Beatae quae dolores soluta sunt libero sequi unde facilis numquam nisi. Sit dignissimos incidunt aperiam alias temporibus unde impedit provident cum, atque, laborum aliquam aliquid iste possimus illo. Repudiandae asperiores quisquam eveniet eaque quasi cum cupiditate minus illo harum! Itaque dolorem magni optio nobis impedit vitae autem adipisci quidem ea ipsam, nam aperiam, labore minus officia debitis sint eum. Nulla nam exercitationem rerum. Fuga, perferendis ipsum. Minus, iste quibusdam quia sapiente quas est fuga? Placeat illo ducimus laborum eveniet iure molestias numquam consectetur, non quae adipisci veniam esse, recusandae quisquam reprehenderit ex? Molestiae facere nostrum est, quas suscipit quo commodi! Repudiandae nisi ipsa nulla adipisci architecto accusantium aut dolorum, ab, reiciendis pariatur in quisquam ut necessitatibus amet officia libero accusamus ipsam optio illo ea facilis. Rem.</p>
+                </div>
+                    <div class="about-artist">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXMEBq8MPbFkkUNDlTiXZQWpPOeNOspU-jKg&s" alt="">
+                    <h1>About The Artist</h1>
+                    <div class="music-det">
+                        <h3>${playlist[index].musicSinger}</h3>
+                        <h5>8.8 millions</h5>
+                    </div>
+                </div>
+                `
+
+        update.innerHTML = mData
+    })
+})
