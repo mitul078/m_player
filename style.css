@@ -120,6 +120,10 @@ main {
   gap: 0.4rem;
   white-space: nowrap;
 }
+.container .music .left .playlist-name .l2 .user-info :nth-child(3) {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
 .container .music .left .playlist {
   width: 100%;
   height: 60%;
@@ -358,7 +362,6 @@ main {
   overflow: auto;
   color: black;
   padding: 0.7rem 1rem;
-  background-color: burlywood;
 }
 .container .mobile-view .nav {
   display: flex;
@@ -447,12 +450,13 @@ main {
   color: white;
   padding: 1rem;
   font-size: 1.2rem;
-  background-color: skyblue;
   overflow: auto;
   max-height: 450px;
 }
-.container .mobile-view .lyrics p {
-  width: 70%;
+.container .mobile-view .lyrics pre {
+  margin-top: 1rem;
+  width: 90%;
+  line-height: 1.7rem;
 }
 .container .mobile-view .about-artist {
   margin-top: 1rem;

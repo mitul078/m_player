@@ -2,17 +2,505 @@ let text = document.querySelector('.song-detail p')
 let musicPlaylist = document.querySelector('.playlist')
 
 const playlist = [
-    { id: 1, musicImage: 'https://i.ytimg.com/vi/sFMRqxCexDk/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGBMgHyh_MA8=&rs=AOn4CLASvUOwkGlovr8nJCxc4ATXayHxxA', musicName: 'Choo Lo', musicSinger: 'The Local Train', albumName: 'Aalas Ka Pedh', musicDuration: '3:54', musicSrc: './m1.mp3', bgColor: 'linear-gradient(90deg, #1CB5E0 0%, #000851 100%)' },
-    { id: 2, musicImage: 'https://cdn.shortpixel.ai/spai/q_glossy+ret_img+to_auto/www.slantmagazine.com/wp-content/uploads/2024/08/music_diewithasmile.jpg', musicName: 'Die With Smile', musicSinger: 'Bruno Mars , Lady Gaga', albumName: 'Die With Smile', musicDuration: '4:12', musicSrc: './m2.mp3', bgColor: 'linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%)' },
-    { id: 3, musicImage: 'https://i.ytimg.com/vi/4BrziEPQrOQ/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBvZKyFNe1vZXC4n1YTNPoWMoo2-g', musicName: 'Dil To Jaan Tu', musicSinger: 'Gurnazar, Chet Singh', albumName: 'Dil To Jaan Tu', musicDuration: '3:57', musicSrc: './m3.mp3', bgColor: 'linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%)' },
-    { id: 4, musicImage: 'https://c.saavncdn.com/133/Faasle-Hindi-2021-20210801214117-500x500.jpg', musicName: 'Faasle', musicSinger: 'Aditya Rikhari', albumName: 'Faasle', musicDuration: '3:42', musicSrc: './m4.mp3', bgColor: 'linear-gradient(90deg, #3F2B96 0%, #A8C0FF 100%)' },
-    { id: 5, musicImage: 'https://i1.sndcdn.com/artworks-GArwu8k4nmxqcByq-kGjdLg-t500x500.jpg', musicName: 'Kabhi Kabhi Aditi', musicSinger: 'Rashi Ali', albumName: 'Janne Tu.. Ya Janne Na', musicDuration: '3:39', musicSrc: './m5.mp3', bgColor: 'linear-gradient(90deg, #FDBB2D 0%, #22C1C3 100%)' },
-    { id: 6, musicImage: 'https://images.genius.com/f6997af0e4a50956d92a5ca3514a9161.1000x1000x1.jpg', musicName: 'Ishq Hai', musicSinger: 'Anurag Saikia , Raj Shekhar ', albumName: 'Mis-matched S3', musicDuration: '5:13', musicSrc: './m6.mp3', bgColor: 'linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%)' },
-    { id: 7, musicImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-ipztPLNU132WFdOMe7FAUQ0JFqJVivQM-A&s', musicName: 'Heartbreak Kid', musicSinger: 'Talha Anjum, Umair', albumName: 'My Terrible Mind', musicDuration: '4:04', musicSrc: './m7.mp3', bgColor: 'linear-gradient(90deg, #d53369 0%, #daae51 100%)' },
-    { id: 8, musicImage: 'https://i.ytimg.com/vi/alkj73ka5m4/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBNP8C_kHquHEtgE-ChXihT3TCu1g', musicName: 'Departure Lane', musicSinger: 'Talha Anjum , Umair', albumName: 'My Terrible Mind', musicDuration: '2:47', musicSrc: './m8.mp3', bgColor: 'linear-gradient(90deg, #fcff9e 0%, #c67700 100%)' },
-    { id: 9, musicImage: 'https://images.genius.com/4ad6d73dbd7d0ca4abecdaab6eee0e20.1000x1000x1.png', musicName: 'Paro', musicSinger: 'Aditya Rikhari', albumName: 'Paro', musicDuration: '2:33', musicSrc: './m9.mp3', bgColor: 'linear-gradient(90deg, #9ebd13 0%, #008552 100%)' },
-    { id: 10, musicImage: 'https://i.scdn.co/image/ab67616d0000b27385c5968be0d0d9c545241124', musicName: 'Pal Pal', musicSinger: 'Afusic', albumName: 'Pal Pal', musicDuration: '2:27', musicSrc: './m10.mp3', bgColor: 'linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%)' }
+    {
+        id: 1,
+        musicImage: 'https://i.ytimg.com/vi/sFMRqxCexDk/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGBMgHyh_MA8=&rs=AOn4CLASvUOwkGlovr8nJCxc4ATXayHxxA',
+        musicName: 'Choo Lo',
+        musicSinger: 'The Local Train',
+        albumName: 'Aalas Ka Pedh',
+        musicDuration: '3:54',
+        musicSrc: './m1.mp3',
+        bgColor: 'linear-gradient(180deg, #1CB5E0 0%, #000851 100%)',
+        lyricsColor: '#1CB5E0',
+        lyrics: `Khada hoon aaj bhi wahin
+Ke dil phir beqaraar hai
+Khada hoon aaj bhi wahin
+Ke tera intezaar hai
+Chhoo lo jo mujhe tum kabhi
+Kho na jaaun main raat-din
+Nazron mein tum ho base
+Keh do jo tum ek baar
+"Mere ho, bas tum mere"
+Nazron mein tum ho base
+Khada hoon aaj bhi wahin
+Lagi teri hi aas hai
+Kaisi hai ye bebasi?
+Ye kaisi dil ki pyaas hai?
+Chhoo lo jo mujhe tum kabhi
+Kho na jaaun main raat-din
+Nazron mein tum ho base
+Keh do jo tum ek baar
+"Mere ho, bas tum mere"
+Nazron mein tum ho base
+Reh jaaunga yoon hi, bas yoon hi, bas yoon hi
+Reh jaaunga yoon hi, bas yoon hi, bas yoon hi
+Reh jaaunga yoon hi, bas yoon hi, bas yoon hi
+Reh jaaunga yoon hi, bas yoon hi, bas yoon hi
+Chhoo lo jo mujhe tum kabhi
+Kho na jaaun main raat-din
+Nazron mein tum ho base
+Keh do jo tum ek baar
+"Mere ho, bas tum mere"
+Nazron mein tum ho base
+Haan, main ruka hoon
+Tu ja chuka hai
+Haan, main ruka hoon
+Tu ja chuka hai`
+
+    },
+    {
+        id: 2,
+        musicImage: 'https://cdn.shortpixel.ai/spai/q_glossy+ret_img+to_auto/www.slantmagazine.com/wp-content/uploads/2024/08/music_diewithasmile.jpg',
+        musicName: 'Die With Smile',
+        musicSinger: 'Bruno Mars , Lady Gaga',
+        albumName: 'Die With Smile',
+        musicDuration: '4:12',
+        musicSrc: './m2.mp3',
+        bgColor: 'linear-gradient(180deg, #00C9FF 0%, #92FE9D 100%)',
+        lyricsColor: '#00C9FF',
+        lyrics: `Ooh
+I, I just woke up from a dream
+Where you and I had to say goodbye
+And I don't know what it all means
+But since I survived, I realized
+Wherever you go, that's where I'll follow
+Nobody's promised tomorrow
+So I'ma love you every night like it's the last night
+Like it's the last night
+If the world was ending, I'd wanna be next to you
+If the party was over and our time on Earth was through
+I'd wanna hold you just for a while and die with a smile
+If the world was ending, I'd wanna be next to you
+Ooh
+Ooh, lost, lost in the words that we scream
+I don't even wanna do this anymore
+'Cause you already know what you mean to me
+And our love's the only war worth fighting for
+Wherever you go, that's where I'll follow
+Nobody's promised tomorrow
+So I'ma love you every night like it's the last night
+Like it's the last night
+If the world was ending, I'd wanna be next to you
+If the party was over and our time on Earth was through
+I'd wanna hold you just for a while and die with a smile
+If the world was ending, I'd wanna be next to you
+Right next to you
+Next to you
+Right next to you
+Oh-oh, oh
+If the world was ending, I'd wanna be next to you
+If the party was over and our time on Earth was through
+I'd wanna hold you just for a while and die with a smile
+If the world was ending, I'd wanna be next to you
+If the world was ending, I'd wanna be next to you
+Ooh
+I'd wanna be next to you`
+    },
+    {
+        id: 3,
+        musicImage: 'https://i.ytimg.com/vi/4BrziEPQrOQ/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBvZKyFNe1vZXC4n1YTNPoWMoo2-g',
+        musicName: 'Dil To Jaan Tu',
+        musicSinger: 'Gurnazar, Chet Singh',
+        albumName: 'Dil To Jaan Tu',
+        musicDuration: '3:57',
+        musicSrc: './m3.mp3',
+        bgColor: 'linear-gradient(180deg, #FC466B 0%, #3F5EFB 100%)',
+        lyricsColor: '#FC466B',
+        lyrics: `Tenu ki dassa mere layi kya tu
+Mere layi dhadkan, mere layi saah tu
+Tenu ki dassa mere layi kya tu
+Mere layi dhadkan, mere layi saah tu
+
+Haye dil tu, jaan tu, dard di dwaa tu
+Jad tak main jeena, mere jeen di wajah tu
+Dil tu, jaan tu, dard di dwaa tu
+Jad tak main jeena, mere jeen di wajah tu
+
+Tu taan mereyan sohneya yaara
+Tukda mere dil da ae
+Tere warga yaar ve sajna
+Kise kise nu milda ae
+
+Hai pahadan di thandi hawa tu
+Main haan raahi, yaara mera raah tu
+
+Haye dil tu, jaan tu, dard di dwaa tu
+Jad tak main jeena, mere jeen di wajah tu
+Dil tu, jaan tu, dard di dwaa tu
+Jad tak main jeena, mere jeen di wajah tu
+
+Chal rahi hoon ab, tham jaane ko dil karta hai
+7 janmo ki kasam khane ko dil karta hai
+Dil karta hai tujhe kar loon main qareeb itna
+Ke teri saanson mein ab ghul jaane ko dil karta hai
+
+Dil de vich dede thodi jahi thaan tu
+Apne naa naal jod le mera naa tu
+
+Haye dil tu, jaan tu, dard di dwaa tu
+Jad tak main jeena, mere jeen di wajah tu
+Dil tu, jaan tu, dard di dwaa tu
+Jad tak main jeena, mere jeen di wajah tu`
+    },
+    {
+        id: 4,
+        musicImage: 'https://c.saavncdn.com/133/Faasle-Hindi-2021-20210801214117-500x500.jpg',
+        musicName: 'Faasle',
+        musicSinger: 'Aditya Rikhari',
+        albumName: 'Faasle',
+        musicDuration: '3:42',
+        musicSrc: './m4.mp3',
+        bgColor: 'linear-gradient(180deg, #3F2B96 0%, #A8C0FF 100%)',
+        lyricsColor: '#3F2B96',
+        lyrics: `Huye faasle, jhoote silsile
+Toote huye dil jaayein kahaan?
+Mujhe jo khushi mili na kabhi
+Jaaye tere sang, jaaye tu jahaan
+Meri ye dua hai ki tera jeewan yoon hi
+Chalta rahe, saari khwaahishein hon poori
+Teri duniya mein na ho ye kami
+Na ho ye kami
+Yaad hai mujhe teri har ada
+Muskuraahatein teri
+Tera mujh se chup ke se yoon
+Kahna ki tu hai meri
+Jaane ye kya ho gaya, ho gaye juda
+Tere waaste sabhi raaste
+Chhod ke main aai yahaan
+Tu to na mila, yoon hi chal diya
+Le ke mera dil jaane tu kahaan
+Jaaoonga kahaan, main to hoon yahaan
+Tere dil ki aahaton mein hoon
+Sapnon mein tu, sochon mein tu
+Har lamhe mein tu
+Dhadke ye dil tere hi liye
+Hoga kisi ka na ab ye
+Ja raha hoon main
+Ja rahi hoon main
+Ja raha hoon main
+Ja rahi hoon main`
+    },
+    {
+        id: 5,
+        musicImage: 'https://i1.sndcdn.com/artworks-GArwu8k4nmxqcByq-kGjdLg-t500x500.jpg',
+        musicName: 'Kabhi Kabhi Aditi',
+        musicSinger: 'Rashi Ali',
+        albumName: 'Janne Tu.. Ya Janne Na',
+        musicDuration: '3:39',
+        musicSrc: './m5.mp3',
+        bgColor: 'linear-gradient(180deg, #FDBB2D 0%, #22C1C3 100%)',
+        lyricsColor: '#FDBB2D',
+        lyrics: `Kabhi-kabhi aditi zindagi mein yuhi koi apna lagta hai
+Kabhi-kabhi aditi wo bichad jaye to ek sapna lagta hai
+Aise mein koi kaise apne aasun ko behene se roke
+Aur kaise koi soch de Everything's gonna be ok
+Kabhi-kabhi to lage zindagi mein rahi na khushi aur na maza
+Kabhi-kabhi to lage har din muskhil aur har pal ek saza
+Aise mein koi kaise muskuraye, kaise hansde kush hoke
+Aur kaise koi soch de Everything's gonna be ok
+Soch zara jaan-e-jaan tujhko hum kitna chahte hai
+Roote hai hum bhi agar teri aakhon mein aasun aate hain
+Gaana to aata nahi hai magar phir bhi hum gaate hain
+Hey, aditi maana kabhi-kabhi sare jahan mein andhera hota hai
+Lekin raat ke baad hi to savera hota hai
+Kabhi-kabhi aditi zindagi mein yuhi koi apna lagta hai
+Kabhi-kabhi aditi wo bichad jaye to ek sapna lagta hai
+Hey aditi hasde hasde hasde hasde hasde tu zara
+Nahi to bas thoda thoda thoda thoda thoda thoda muskura
+Tu kush hai to lage ki jahan mein chhaai hai kushi
+Suraj nikle badlon se aur baate zindagi
+Sun to zara madhosh hawa tujhse kehne lagi
+Ki aditi wo jo bichadte hain ek na ek din phir mil jate hain
+Ye aditi jaane tu ya jaane na phool phir khil jate hain
+Kabhi-kabhi aditi zindagi mein yuhi koi apna lagta hai
+Kabhi-kabhi aditi wo bichad jaye to ek sapna lagta hai
+Hey aditi hasde hasde hasde hasde hasde tu zara
+Nahi to bas thoda thoda thoda thoda thoda thoda muskura
+Hey aditi hasde hasde hasde hasde hasde tu zara
+Nahi to bas thoda thoda thoda thoda thoda thoda muskura`
+    },
+    {
+        id: 6,
+        musicImage: 'https://images.genius.com/f6997af0e4a50956d92a5ca3514a9161.1000x1000x1.jpg',
+        musicName: 'Ishq Hai',
+        musicSinger: 'Anurag Saikia , Raj Shekhar ',
+        albumName: 'Mis-matched S3',
+        musicDuration: '5:13',
+        musicSrc: './m6.mp3',
+        bgColor: 'linear-gradient(180deg, #e3ffe7 0%, #d9e7ff 100%)',
+        lyricsColor: '#e3ffe7',
+        lyrics: `Dekho toh kya hi baat hai (kya hi baat hai)
+Kambakht is jahaan mein (is jahaan mein)
+Yeh ishq hai jisne isey (jisne isey)
+Rehne ke qaabil kar diya (kar diya)
+Rehne ke qaabil kar diya
+Roshni hi roshni hai
+Chaar-soo, jo chaar-soo
+Ishq hai yeh, ishq hai
+Ishq hai yeh, ishq hai
+Jo chhupa hai har nazar mein
+Har taraf jo roo-ba-roo
+Ishq hai yeh, ishq hai
+Ishq hai yeh, ishq hai
+Ishq hai yeh, ishq hai
+Ishq hai yeh, ishq hai
+Tum se mile toh kuchh gunguni si
+Hone lagi hain sardiyaan (ishq-ishq, ishq-ishq)
+Tum se mile toh dekho shehar mein
+Khilne lagi hain waadiyaan (ishq-ishq, ishq-ishq)
+Saaya mera hai tu aur main tera
+Tu dikhe ya na dikhe tu
+Teri khushboo koo-ba-koo
+Ishq hai yeh, ishq hai
+Ishq hai yeh, ishq hai
+Ishq hai yeh, ishq hai
+Ishq hai yeh, ishq hai
+Haan, koyi kehta, ishq humein aabaad karta hai
+Koyi kehta, ishq humein barbaad karta hai
+Zehan ki tang deewaaron se uthkar
+Main kehta hoon, ishq humein aazaad karta hai
+Moh pe yeh karam bhi keeje
+Moh pe yeh karam bhi keeje
+Laage naahi tum bin jiyaara
+Aisi bekhudi hi deeje
+Moh pe yeh karam bhi keeje
+Moh pe yeh karam bhi keeje
+Laage naahi tum bin jiyaara
+Aisi bekhudi (aisi bekhudi) hi deeje
+Haan, saara mera ho tu aur main tera
+Yeh hi meri vehshatein hain
+Yeh hi meri justujoo
+Ishq hai yeh, ishq hai
+Ishq hai yeh, ishq hai
+Ishq hai yeh, ishq hai
+Ishq hai yeh, ishq hai
+Barsi hai mujhpe meher aasmaani
+(Barsi hai mujhpe meher aasmaani)
+Mohabbat ka dekho asar aasmaani
+(Mohabbat ka dekho asar aasmaani)
+Pairon ke neeche zameen ud rahi hai
+(Pairon ke neeche zameen ud rahi hai)
+Hai ishq mein har safar aasmaani
+Tum se mile toh baithe-bithaayein
+Chhoone lage hain aasmaan (ishq-ishq, ishq-ishq)
+Tum se mile toh chhota sa qissa
+Ban'ne ko hai ik daastaan (ishq-ishq, ishq-ishq)
+Haan, saaya mera hai tu aur main tera
+Tu dikhe ya, tu dikhe ya
+Tu dikhe ya na dikhe tu
+Teri khushboo koo-ba-koo
+Ishq hai yeh, ishq hai (ishq hai)
+Ishq hai yeh, ishq hai
+Ishq hai yeh, ishq hai
+Ishq hai yeh, ishq hai (ishq hai)
+Ishq hai yeh, ishq hai
+Ishq hai yeh, ishq hai
+Ishq hai yeh, ishq hai (ishq hai)
+Ishq hai yeh, ishq hai`
+    },
+    {
+        id: 7,
+        musicImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-ipztPLNU132WFdOMe7FAUQ0JFqJVivQM-A&s',
+        musicName: 'Heartbreak Kid',
+        musicSinger: 'Talha Anjum, Umair',
+        albumName: 'My Terrible Mind',
+        musicDuration: '4:04',
+        musicSrc: './m7.mp3',
+        bgColor: 'linear-gradient(180deg, #d53369 0%, #daae51 100%)',
+        lyricsColor: '#d53369',
+        lyrics: `Ye dil bechaara tassali bhi chaahe kabhi
+Ab ke wo aaye to itni bedardi se jaaye nahin
+Ye dil awaara nikal hi jaata hai kahin
+Thehraao nahin, I'm gone again, I'm gone again
+Baad-e-saba to wo hi hai, bas hai ek kami
+Ke ab teri zulfon ko chhu ke wo mujhse guzarti nahin
+Baad-e-saba to wo hi hai, bas hai ek kami
+Ke ab teri zulfon ko chhu ke wo mujhse guzarti nahin
+Teri saadgi ke sadqe
+Teri aajizi pe marte
+Tere saaye se ho gaye hum
+Tere saath hi to chalte
+Saare gair mere liye khush
+Mere apne mujhse jalte
+Lage saal ab ek pal se
+Mere shows lage jalse
+Rahe wazan mere kal pe
+Bade gunaah mere sar the
+Par zindagi bas ek rawaani ka naam
+Mere gaane sab jawaani ke naam
+Nasha hai ab tere hijar mein, jaanam
+Sharaab to ab jaise paani ka naam
+Tanhaai, tareeki aur tark-e-ta'alluq
+Phir wo hi maut aur phir wo hi taabut
+Dil ek sholay ki tarah dehakta bhi hai
+Dil parinda fajar pe chehekta bhi hai
+Behekta bhi hai, ye mehekta bhi hai
+Sharaab mein ghole ittar sa hi hai
+Tu beparwaah hai, befikar sa bhi hai
+Main likhta hu shaayari jiske liye
+Wo padhta bhi hai aur mukarta bhi hai
+Ye dil bechaara tassali bhi chaahe kabhi
+Ab ke wo aaye to itni bedardi se jaaye nahin
+Ye dil awaara nikal hi jaata hai kahin
+Thehraao nahin, I'm gone again, I'm gone again
+Baad-e-saba to wo hi hai, bas hai ek kami
+Ke ab teri zulfon ko chhu ke wo mujhse guzarti nahin
+Baad-e-saba to wo hi hai, bas hai ek kami
+Ke ab teri zulfon ko chhu ke wo mujhse guzarti nahin
+Mere ghar mein ab ek kamra khaali bhi hai
+Wahaan se ab hosh hata di gayi hai
+Ek saf-e-maatam bichha li gayi hai
+Us kamre mein ab bas kitaabein hi baaqi hain
+Aqal wahaan se utha li gayi hai
+Nuskha-e-Ishq to sabko chaahiye
+Nuskha-e-dard bata dijiye
+Jo likhein hain khat wo jala dijiye
+Mujhe humdardiyan samajh aati nahin hain
+Jo tujhpe beeti, tu sab pe ayaan kar
+Jo mujhpe beeti wo koi baat hi nahin hai
+Judaai mein bhi kuchh wafa ke takaaze
+Ke aib pe parde uthaate nahin hain
+Ek yaar jiske ghar pe maa hi nahin
+Ek main jo ghar pe raat tha hi nahin
+Jo mayassar ho, kyun uski chaah hi nahin?
+Dil ko tassali to de
+Dil ko tassali nahin
+Ye dhadkanein ladkhadaati hain
+Be-tarteebiyan hein badi
+Tu jab bhi mili badi sard si
+Dawa hai paas har dard ki
+I got rocks aur thodi si Hennessy
+Jab tu sochon mein rehti hai rent free
+Ye dil bechaara tassali bhi chaahe kabhi
+Ab ke wo aaye to itni bedardi se jaaye nahin
+Ye dil awaara nikal hi jaata hai kahin
+Thehraao nahin, I'm gone again, I'm gone again
+Baad-e-saba to wo hi hai, bas hai ek kami
+Ke ab teri zulfon ko chhu ke wo mujhse guzarti nahin
+Baad-e-saba to wo hi hai, bas hai ek kami
+Ke ab teri zulfon ko chhu ke wo mujhse guzarti nahin`
+    },
+    {
+        id: 8,
+        musicImage: 'https://i.ytimg.com/vi/alkj73ka5m4/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBNP8C_kHquHEtgE-ChXihT3TCu1g',
+        musicName: 'Departure Lane',
+        musicSinger: 'Talha Anjum , Umair',
+        albumName: 'My Terrible Mind',
+        musicDuration: '2:47',
+        musicSrc: './m8.mp3',
+        bgColor: 'linear-gradient(180deg, #fcff9e 0%, #c67700 100%)',
+        lyricsColor: '#fcff9e',
+        lyrics: `Khushfehmiyan hain, khud se bani hain
+Kuch kami hai toh (kuch kami hai toh)
+Main bhi yahaan hoon, woh bhi yahin hai
+Kya woh nahi hai jo? (woh nahi hai jo)
+Kya woh teri-meri be-takallufi?
+Ya woh duniya mein sabse sar-kashi
+Tu pariyon si kaisi nazneen
+Ki dil ne zehan ki na suni
+Khuda ne yeh hawayehin tere sang kardi
+Tu woh jo be-rang ko bhi rang karti
+Tu woh jo mujhe haasil hi nahi
+Main karoon tujhe kaise yeh bayaan?
+Meri jaan, meri jaan, tu na jaa
+Abhi karz hai tujhpe woh waada
+Meri jaan, mujhe kya hi pata tha
+Rang badle yeh kaise aasmaan
+Meri jaan, meri jaan, yoon na jaa
+Badlo na tum apna iraada
+Meri jaan, mujhe kya hi pata tha
+Rang badle yeh kaise aasmaan
+Meri saari umar mein tu hi hai kami, baaki sab hai mayassar
+Tera na aana mujhe maar dega, tanhaiyon mein dil mera rukta hai aksar
+Bikhra hai dil ka yeh daftar, koyi nhi ghar par, jaaunga kidhar tak?
+Aadatein nahi chhoot'ti, roz wahin, jahaan se shuru kiya sifar se sifar tak
+Duniya mile kaam se bas (mm-mm)
+Duniya mere kaam ki nahi (mm-mm)
+Main suraj sе mukhatib hoke shaam se baitha hoon
+Ye humara pеhla jaam to nahi (jaam to nahi)
+Sabar ka imtehaan na le, tu mere sabar ka inaam to nahi
+Tu mujhse kuchh chhupa bhi le
+Tu mujhe kuchh bata hi nahi
+Ab teri marzi, mujhpe kuch tu kar ayaan hi nahi (no, no)
+Meri jaan, meri jaan, yoon na jaa
+Abhi karz hai tujhpe woh waada
+Meri jaan, mujhe kya hi pata tha
+Rang badle yeh kaise aasmaan
+Meri jaan, meri jaan, yoon na jaa
+Badlo na tum apna iraada
+Meri jaan, mujhe kya hi pata tha
+Rang badle yeh kaise aasmaan`
+    },
+    {
+        id: 9,
+        musicImage: 'https://images.genius.com/4ad6d73dbd7d0ca4abecdaab6eee0e20.1000x1000x1.png',
+        musicName: 'Paro',
+        musicSinger: 'Aditya Rikhari',
+        albumName: 'Paro',
+        musicDuration: '2:33',
+        musicSrc: './m9.mp3',
+        bgColor: 'linear-gradient(180deg, #9ebd13 0%, #008552 100%)',
+        lyricsColor: '#9ebd13',
+        lyrics: `Hm
+Ke ab kuchh hosh nahin hai
+Tu mujhko pila degi kya?
+Main peekar jo bhi kahunga
+Tu subah bhula degi kya?
+Tu baahon mein rakh le do pal
+Phir chaahe duur hata de
+Main gaud mein rakh loon agar sar
+Tu mujhko sula degi kya?
+Jaati nahin teri yaadein
+Kasam se, ke dil ka bharam hai tu
+Baaki nahin ab koi sharam
+Jaana, ek dharam hai tu
+Jo kehti thi, "Mat piyo na
+Meri jaan, zehar hai ye"
+Use dekhta hoon koi gair chhuye
+Ab aur zehar kya piyoon?
+
+Ta-ra-ra, ra-ra, ra-ra, ra
+Ta-ra-ra, ra-ra, ra-ra, ra-ta-ra-ra
+Ta-ra-ra, ra-ra, ra-ra, ra
+Ta-ra, ra-ra, ra-ra, ra-ra, ra-ra`
+    },
+    {
+        id: 10,
+        musicImage: 'https://i.scdn.co/image/ab67616d0000b27385c5968be0d0d9c545241124',
+        musicName: 'Pal Pal',
+        musicSinger: 'Afusic',
+        albumName: 'Pal Pal',
+        musicDuration: '2:27',
+        musicSrc: './m10.mp3',
+        bgColor: 'linear-gradient(180deg, #00d2ff 0%, #3a47d5 100%)',
+        lyricsColor: '#00d2ff',
+        lyrics: `Pal-pal jeena muhaal mera tere bina
+Yeh saare nashe bekaar teri aankhon ke siva
+Ghar nahi jaata, main bahar, rehta tera intezaar
+Mere khwabon mein aa na karke 16 singhaar
+Main ab kyun hosh mein aata nahi?
+Sukoon yeh dil kyun paata nahi?
+Kyun todun khud se jo the waade?
+Ke ab yeh ishq nibhana nahi
+Main modun tumse jo yeh chehra
+Dobara nazar milana nahi
+Yeh duniya jaane mera dard
+Tujhe yeh nazar kyun aata nahi?
+Sohneya, yoon tera sharmana meri jaan na le-le
+Kaan ke peechhe zulf chupana, meri jaan, kya kehne!
+Zaalima, tauba tera nakhra! Iske waar kya kehne!
+Thaam ke baithe dil ko ghayal, kahin haar na baithein
+Teri nazrein mujhse kya kehti hain, inmein wafa behti hai
+Thodi-thodi si raazi, thodi si khafa rehti hain
+Log hain zaalim bade, inmein jafa dekhi hai
+Yeh duniya teri nahi, maine tujh mein haya dekhi hai
+Jeena muhaal mera tere bina
+Yeh saare nashe bekaar teri aankhon ke siva
+Ghar nahi jaata, main bahar, rehta tera intezaar
+Mere khwabon mein aa na karke 16 singhaar`
+    }
 ];
+
 
 
 let music = ''
@@ -269,7 +757,7 @@ document.addEventListener('click', (e) => {
 });
 
 let number = document.querySelector('.n-of-song')
-number.innerHTML = `${playlist.length} songs`
+number.innerHTML = `Total ${playlist.length} songs`
 number.style.opacity = '.7'
 number.style.fontSize = '.9rem'
 
@@ -287,7 +775,7 @@ function calculateTotalDuration() {
     totalMinutes += Math.floor(totalSeconds / 60);
     totalSeconds = totalSeconds % 60;
 
-    const formattedDuration = `${totalMinutes} min ${totalSeconds} sec`;
+    const formattedDuration = `Total-Time: ${totalMinutes}:${totalSeconds}`;
     totalTime.innerHTML = formattedDuration;
 }
 calculateTotalDuration();
@@ -295,6 +783,7 @@ calculateTotalDuration();
 
 let mobileView = document.querySelector('.mobile-view')
 let down = document.querySelector('.down')
+let lyrics = document.querySelector('.lyrics')
 
 bar.addEventListener('click', () => {
     mobileView.style.display = 'inline-block';
@@ -302,7 +791,6 @@ bar.addEventListener('click', () => {
 down.addEventListener('click', () => {
     mobileView.style.display = 'none';
 })
-
 let update = document.querySelector('.updateInfo')
 boxes.forEach((box, index) => {
     box.addEventListener('click', () => {
@@ -332,7 +820,7 @@ boxes.forEach((box, index) => {
                 </div>
                 <div class="lyrics">
                     <h4>Lyrics Preview</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, adipisci. Quasi voluptatem doloribus animi eligendi illo temporibus nostrum harum eius expedita rerum qui nulla, aut facilis odit hic! Itaque ducimus veniam rerum reprehenderit odio dolorem, animi porro officiis minima dolor ea ut corrupti voluptate impedit maiores voluptatum in quasi provident neque nulla quaerat esse. Officia eligendi laboriosam iste eaque eveniet aliquid quis minus, deserunt, dolor est ipsam esse quasi ab qui impedit repellat beatae. Beatae quae dolores soluta sunt libero sequi unde facilis numquam nisi. Sit dignissimos incidunt aperiam alias temporibus unde impedit provident cum, atque, laborum aliquam aliquid iste possimus illo. Repudiandae asperiores quisquam eveniet eaque quasi cum cupiditate minus illo harum! Itaque dolorem magni optio nobis impedit vitae autem adipisci quidem ea ipsam, nam aperiam, labore minus officia debitis sint eum. Nulla nam exercitationem rerum. Fuga, perferendis ipsum. Minus, iste quibusdam quia sapiente quas est fuga? Placeat illo ducimus laborum eveniet iure molestias numquam consectetur, non quae adipisci veniam esse, recusandae quisquam reprehenderit ex? Molestiae facere nostrum est, quas suscipit quo commodi! Repudiandae nisi ipsa nulla adipisci architecto accusantium aut dolorum, ab, reiciendis pariatur in quisquam ut necessitatibus amet officia libero accusamus ipsam optio illo ea facilis. Rem.</p>
+                    <pre style="white-space: pre-wrap;">${playlist[index].lyrics.trim()}</pre>
                 </div>
                     <div class="about-artist">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXMEBq8MPbFkkUNDlTiXZQWpPOeNOspU-jKg&s" alt="">
@@ -345,5 +833,11 @@ boxes.forEach((box, index) => {
                 `
 
         update.innerHTML = mData
+        let lyrics = document.querySelector('.lyrics')
+
+        console.log(playlist[index].bgColor)
+        mobileView.style.background = playlist[index].bgColor;
+        lyrics.style.background = playlist[index].lyricsColor;
+
     })
 })

@@ -69,9 +69,6 @@ main {
     background-color: #121212;
     overflow: hidden;
 
-
-
-
     .music {
         width: 100%;
         height: 90vh;
@@ -124,7 +121,12 @@ main {
                         display: flex;
                         gap: .4rem;
                         white-space: nowrap;
+                        :nth-child(3){
+                            font-size: .9rem;
+                            opacity: .7;
+                        }
                     }
+
                 }
             }
 
@@ -424,7 +426,6 @@ main {
         overflow: auto;
         color: black;
         padding: .7rem 1rem;
-        background-color: burlywood;
 
         .nav {
             display: flex;
@@ -526,12 +527,13 @@ main {
             color: white;
             padding: 1rem;
             font-size: 1.2rem;
-            background-color:skyblue;
             overflow: auto;
             max-height: 450px;
 
-            p {
-                width: 70%;
+            pre {
+                margin-top: 1rem;
+                width: 90%;
+                line-height: 1.7rem;
             }
         }
 
